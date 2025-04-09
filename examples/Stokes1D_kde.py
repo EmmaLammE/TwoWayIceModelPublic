@@ -7,7 +7,7 @@ import argparse
 
 import sys
 sys.path.append('../src/')
-data_path = '/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/data_for_FNO_training/train_data/'
+data_path = '/elle_grainsize_results/data_for_FNO_training/train_data/'
 
 import torch
 import statsmodels.api as sm
@@ -176,10 +176,10 @@ def ice_column1D(grain_model_epoch,grain_model_path,euler_model_epoch,euler_mode
     
     grains_in = np.zeros((nz + 1,kde_reso,step_known))
     # load initial condition for small scale simulations. This is pre-saved using the scripts in grain_euler_process notebook in postprocess
-    init_kde =  torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_kde.pt').to(device)
-    init_strain =  torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_strain.pt').to(device)
-    init_pressure =  torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_pressure.pt').to(device)
-    init_temperature =  torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_temperature.pt').to(device)
+    init_kde =  torch.load('/elle_grainsize_results/jcp/data/syn_init_kde.pt').to(device)
+    init_strain =  torch.load('/elle_grainsize_results/jcp/data/syn_init_strain.pt').to(device)
+    init_pressure =  torch.load('/elle_grainsize_results/jcp/data/syn_init_pressure.pt').to(device)
+    init_temperature =  torch.load('/elle_grainsize_results/jcp/data/syn_init_temperature.pt').to(device)
     kde_in  = reference_normalize(init_kde[:,:,:step_known], kde_max, kde_min)
     strain_in = log_normalize(init_strain[:,:,:step_known],S_max, S_min)
     pressu_in = reference_normalize(init_pressure[:,:,:step_known],H_max, H_min)
@@ -219,12 +219,12 @@ def ice_column1D(grain_model_epoch,grain_model_path,euler_model_epoch,euler_mode
     euler1_in = np.zeros((nz + 1,grid_size,grid_size,step_known))
     euler2_in = np.zeros((nz + 1,grid_size,grid_size,step_known))
     euler3_in = np.zeros((nz + 1,grid_size,grid_size,step_known))
-    init_euler1 = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_euler_1.pt').to(device)
-    init_euler2 = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_euler_2.pt').to(device)
-    init_euler3 = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_euler_3.pt').to(device)
-    init_strain2D = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_strain2D.pt').to(device)
-    init_pressure2D = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_pressure2D.pt').to(device)
-    init_temperature2D = torch.load('/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/syn_init_temperature2D.pt').to(device)
+    init_euler1 = torch.load('/elle_grainsize_results/jcp/data/syn_init_euler_1.pt').to(device)
+    init_euler2 = torch.load('/elle_grainsize_results/jcp/data/syn_init_euler_2.pt').to(device)
+    init_euler3 = torch.load('/elle_grainsize_results/jcp/data/syn_init_euler_3.pt').to(device)
+    init_strain2D = torch.load('/elle_grainsize_results/jcp/data/syn_init_strain2D.pt').to(device)
+    init_pressure2D = torch.load('/elle_grainsize_results/jcp/data/syn_init_pressure2D.pt').to(device)
+    init_temperature2D = torch.load('/elle_grainsize_results/jcp/data/syn_init_temperature2D.pt').to(device)
     euler1_in = init_euler1[:,:,:,:step_known]/180
     euler2_in = (init_euler2[:,:,:,:step_known]-45)/45
     euler3_in = init_euler3[:,:,:,:step_known]/180
@@ -448,7 +448,7 @@ if __name__ == "__main__":
     parser.add_argument('--euler_model_epoch', type=int, default=500, help='number of epoch')
     parser.add_argument('--euler_model_path', type=str, default='./../model/jcp_syn_euler1_mode12_width16_tanh+L2_custom_N64_epoch', help='Path to trained euler model')
     parser.add_argument('--save_fig_path', type=str, default='./../results/figures/', help='Path to saved test data')
-    parser.add_argument('--save_data_path', type=str, default='/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/ElleFNO_results/syn_1D/', help='Path to saved train data')
+    parser.add_argument('--save_data_path', type=str, default='/elle_grainsize_results/ElleFNO_results/syn_1D/', help='Path to saved train data')
     parser.add_argument('--init_grain_data',type=str,default=20,help='Num of epochs')
     parser.add_argument('--init_euler_data',type=str,default='test_grain_loss_convergence',help='Name for the convergence plot')
     args = parser.parse_args()

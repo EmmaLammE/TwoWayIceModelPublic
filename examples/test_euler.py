@@ -137,7 +137,7 @@ if __name__ == "__main__":
     parser.add_argument('--which_euler', type=str, required=True, help='Specify which euler angle data to process (euler1, euler2, euler3)')
     parser.add_argument('--model_path', type=str, default='./../model/jcp_syn_', help='Path to the trained model file')
     parser.add_argument('--epoch', type=str, default='100', help='Epoch of the trained model file')
-    parser.add_argument('--test_data_path', type=str, default='/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/test/', help='Path to the test data file')
+    parser.add_argument('--test_data_path', type=str, default='/elle_grainsize_results/jcp/data/test/', help='Path to the test data file')
     parser.add_argument('--compare_fig_name', type=str, default='./../results/jcp_', help='Save path for comparison fig')
     args = parser.parse_args()
 

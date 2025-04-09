@@ -81,7 +81,7 @@ def plot_results(grain_init, grain_true, grain_pred, compare_fig_name, grainsize
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run the grain KDE test simulation')
-    parser.add_argument('--data_path', type=str, default='/oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/jcp/data/test/', help='Path to test data file')
+    parser.add_argument('--data_path', type=str, default='/elle_grainsize_results/jcp/data/test/', help='Path to test data file')
     parser.add_argument('--data_name', type=str, default='jcp_grain_kde_mode64_width32_tanh+L2_test_data.h5', help='Name of test data file')
     parser.add_argument('--model_path', type=str, default='./../model/jcp_grain_kde_mode64_width32_tanh+L2_custom_smooth10_N67_epoch201.pth', help='Path to trained model')
     parser.add_argument('--compare_fig_name', type=str, default='./../results/jcp_grain_kde_compare.png', help='Save path for comparison fig')
