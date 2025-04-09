@@ -26,7 +26,7 @@ ml py-numpy/1.24.2_py39
 start_time=$(date +%s)
 date +"Job started at: %Y-%m-%d %H:%M:%S"
 
-python3 train_grain_kde.py --epochs 1601 --model_dimension 256 --data_path /oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/data_for_FNO_training/train_data/ --save_path ./../model/jcp_grain_kde_mode64_width32_tanh+L2_custom
+python3 train_grain_kde.py --epochs 1601 --model_dimension 256 --data_path /elle_grainsize_results/data_for_FNO_training/train_data/ --save_path ./../model/jcp_grain_kde_mode64_width32_tanh+L2_custom
 
 end_time=$(date +%s)
 date +"Job ended at: %Y-%m-%d %H:%M:%S"

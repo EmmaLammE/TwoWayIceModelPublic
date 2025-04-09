@@ -27,11 +27,7 @@ date +"Job started at: %Y-%m-%d %H:%M:%S"
 
 nvidia-smi
 
-# torchrun \
-#   --master_addr=127.0.0.1 \
-#   --master_port=29500 \
-#   --nproc_per_node=2 train_euler1.py --epochs 100 --model_dimension 128 --data_path /oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/data_for_FNO_training/train_data/ --save_path ./../model/jcp_syn_euler1_mode12_width16_tanh+L2_custom
-python3 train_euler1.py --epochs 4000 --model_dimension 128 --data_path /oak/stanford/groups/jsuckale/liuwj/elle_grainsize_results/data_for_FNO_training/train_data/ --save_path ./../model/jcp_syn_euler1_mode12_width16_tanh+L2_custom
+python3 train_euler1.py --epochs 4000 --model_dimension 128 --data_path /elle_grainsize_results/data_for_FNO_training/train_data/ --save_path ./../model/jcp_syn_euler1_mode12_width16_tanh+L2_custom
 
 end_time=$(date +%s)
 date +"Job ended at: %Y-%m-%d %H:%M:%S"
